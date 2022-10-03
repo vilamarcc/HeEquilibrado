@@ -1,0 +1,37 @@
+%% MAIN
+
+%% 1) Análisis de la condición de referencia en vuelo a punto fijo a nivel del mar.
+
+% 1. Determinar la solución al problema de equilibrado en la condición de vuelo a punto
+% fijo para el helicóptero Bo105. Esta solución consiste en determinar los valores de los
+% parámetros: ángulo de balanceo Φ, ángulo de cabeceo, Θ, velocidad inducida del rotor
+% principal, λi , velocidad inducida del rotor antipar, λia, colectivo del rotor principal, θ0,
+% paso cíclico lateral θ1C, paso cíclico longitudinal, θ1S, colectivo del rotor antipar, θT , ángulo
+% de conicidad, β0, ángulo de batimiento longitudinal, β1C, ángulo de batimiento lateral,
+% β1S, y potencia necesaria para el vuelo, PM.
+
+% 2) En esta situación de vuelo debe determinarse la relación entre la potencia neta consumida
+% por el rotor antipar, Pra, y la consumida por el rotor principal, Prp
+
+% 3 )Analice la contribución de cada elemento activo (rotor principal, rotor antipar, fuselaje,
+% estabilizador horizontal derecho, estabilizador horizontal izquierdo y estabilizador vertical) a las fuerzas globales y momentos globales en torno al centro de masas del vehículo.
+% Se plantea hacer un análisis similar al presentado en las tablas 6.1 y 6.2 de Cuerva Tejero
+% et al. [2008].
+
+
+%% 2) Análisis dimensional del vuelo a punto fijo de un helicóptero
+
+
+%% 3)  Análisis de la condición de vuelo vertical.
+
+
+%% 4) Análisis de la condición de vuelo equilibrado en autorrotación vertical
+
+%% 5)  Análisis de la condición de vuelo equilibrado a nivel
+
+%% 6) Análisis de la condición de vuelo equilibrado inclinado.
+
+%% 7) Análisis de la condición de vuelo equilibrado en autorrotación con avance.
+
+%% 8) Análisis paramétrico de la condición de vuelo equilibrado de avance a nivel.
+
