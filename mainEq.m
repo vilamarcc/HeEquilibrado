@@ -159,18 +159,17 @@ for i = 1:length(hs)
     end
 end
 
-
 figure(1); 
-plot(Ws,PMs(1,:),syms(1),'Color','black','LineWidth',0.75); hold on
-plot(Ws,PMs(2,:),syms(2),'Color','black','LineWidth',0.75); hold on
-plot(Ws,PMs(3,:),syms(3),'Color','black','LineWidth',0.75); hold on
-plot(Ws,PMs(4,:),syms(4),'Color','black','LineWidth',0.75); hold on
-plot(Ws,PMs(5,:),syms(5),'Color','black','LineWidth',0.75); hold on
+plot(Ws,PMs(1,:)*0.001,syms(1),'Color','black','LineWidth',0.75); hold on
+plot(Ws,PMs(2,:)*0.001,syms(2),'Color','black','LineWidth',0.75); hold on
+plot(Ws,PMs(3,:)*0.001,syms(3),'Color','black','LineWidth',0.75); hold on
+plot(Ws,PMs(4,:)*0.001,syms(4),'Color','black','LineWidth',0.75); hold on
+plot(Ws,PMs(5,:)*0.001,syms(5),'Color','black','LineWidth',0.75); hold on
 X = [0.55 0.45]; Y = [0.30 0.58];
 annotation('textarrow',X,Y,'FontSize',3,'Linewidth',0.5);
-annotation('textbox',[.41 .32 .3 .33],'EdgeColor','none','String','$h \uparrow$','FontSize',12,'Linewidth',5,'Interpreter','latex');
-xlabel("$W [N]$");
-ylabel("$P_{M} [W]$");
+annotation('textbox',[.41 .36 .3 .33],'EdgeColor','none','String','$h \uparrow$','FontSize',24,'Linewidth',5,'Interpreter','latex');
+xlabel("$W [N]$",'FontSize',24);
+ylabel("$P_{M} [kW]$",'FontSize',24);
 grid minor
 saveas(gcf,"Graficas/PMvsW_PF",'eps');
 
@@ -180,8 +179,8 @@ plot(Ws*(atm.density(0)/atm.density(hs(2))),PMs(2,:)*(atm.density(0)/atm.density
 plot(Ws*(atm.density(0)/atm.density(hs(3))),PMs(3,:)*(atm.density(0)/atm.density(hs(3))),syms(3),'Color','black','LineWidth',0.75); hold on
 plot(Ws*(atm.density(0)/atm.density(hs(4))),PMs(4,:)*(atm.density(0)/atm.density(hs(4))),syms(4),'Color','black','LineWidth',0.75); hold on
 plot(Ws*(atm.density(0)/atm.density(hs(5))),PMs(5,:)*(atm.density(0)/atm.density(hs(5))),syms(5),'Color','black','LineWidth',0.75); hold on
-xlabel("$W/\sigma_I\omega^3$");
-ylabel("$P_{M}/\sigma_I\omega^3$");
+xlabel("$W/\sigma_I\omega^3$",'FontSize',24);
+ylabel("$P_{M}/\sigma_I\omega^3$",'FontSize',24);
 grid minor
 saveas(gcf,"Graficas/PMsigmavsWsigma_PF",'eps');
 
@@ -191,8 +190,8 @@ plot((Ws*(atm.density(0)/atm.density(hs(2)))).^(3/2),PMs(2,:)*(atm.density(0)/at
 plot((Ws*(atm.density(0)/atm.density(hs(3)))).^(3/2),PMs(3,:)*(atm.density(0)/atm.density(hs(3))),syms(3),'Color','black','LineWidth',0.75); hold on
 plot((Ws*(atm.density(0)/atm.density(hs(4)))).^(3/2),PMs(4,:)*(atm.density(0)/atm.density(hs(4))),syms(4),'Color','black','LineWidth',0.75); hold on
 plot((Ws*(atm.density(0)/atm.density(hs(5)))).^(3/2),PMs(5,:)*(atm.density(0)/atm.density(hs(5))),syms(5),'Color','black','LineWidth',0.75); hold on
-xlabel("$(W/\sigma_I\omega^3)^{\frac{3}{2}}$");
-ylabel("$P_{M}/\sigma_I\omega^3$");
+xlabel("$(W/\sigma_I\omega^3)^{\frac{3}{2}}$",'FontSize',24);
+ylabel("$P_{M}/\sigma_I\omega^3$",'FontSize',24);
 grid minor
 saveas(gcf,"Graficas/PMsigmavsWsigma32_PF",'eps');
 
@@ -229,13 +228,13 @@ scatter(0,reg(0),'MarkerEdgeColor','black','MarkerFaceColor','black'); hold on
 plot([Ws_reg(3),Ws_reg(4)],[reg(Ws_reg(3)), reg(Ws_reg(3))],'--','Color','black','LineWidth',0.5); hold on
 plot([Ws_reg(4),Ws_reg(4)],[reg(Ws_reg(3)), reg(Ws_reg(4))],'--','Color','black','LineWidth',0.5); hold on
 
-annotation('textbox',[.13 .01 .3 .18],'EdgeColor','none','String','$C_0$','FontSize',12,'Linewidth',5,'Interpreter','latex');
-annotation('textbox',[.35 .05 .3 .3],'EdgeColor','none','String','$C_1$','FontSize',12,'Linewidth',5,'Interpreter','latex');
+annotation('textbox',[.15 .1 .3 .18],'EdgeColor','none','String','$C_0$','FontSize',24,'Linewidth',5,'Interpreter','latex');
+annotation('textbox',[.35 .075 .3 .3],'EdgeColor','none','String','$C_1$','FontSize',24,'Linewidth',5,'Interpreter','latex');
 
-legend(h,"Ajuste",'Location','best','FontSize',12);
+legend(h,"Ajuste",'Location','southeast','FontSize',24);
 
-xlabel("$(W/\sigma_I\omega^3)^{\frac{3}{2}}$");
-ylabel("$P_{M}/\sigma_I\omega^3$");
+xlabel("$(W/\sigma_I\omega^3)^{\frac{3}{2}}$",'FontSize',24);
+ylabel("$P_{M}/\sigma_I\omega^3$",'FontSize',24);
 grid minor
 saveas(gcf,"Graficas/PMsigmavsWsigma32_PF_2",'eps2c');
 
@@ -341,40 +340,43 @@ for i = 1:length(Vvs)
     Vv_vio(i) = Vvs(i)/v_io;
 
 end
+%%
+
+LW = 1.5;
 
 syms = ["-","--",":","-.","--o"];
 
 figure(5)
-plot(Vvs,lambda_i_vvs,'Color','black','LineWidth',1.5); hold on
-ylabel("$\lambda_i [-]$");
-xlabel("$V_v [m/s]$");
+plot(Vvs,lambda_i_vvs,'Color','black','LineWidth',LW); hold on
+ylabel("$\lambda_i [-]$",'FontSize',24);
+xlabel("$V_v [m/s]$",'FontSize',24);
 grid minor
 saveas(gcf,"Graficas/lambdaivsVv_VV",'eps');
 
 figure(6)
-plot(Vvs,theta_0_vvs*(180/pi),syms(1),'Color','black','LineWidth',1.5); hold on
-plot(Vvs,theta_T_vvs*(180/pi),syms(2),'Color','black','LineWidth',1.5); hold on
-legend("$\theta_0$","$\theta_T$",'Location','best','FontSize',14);
-ylabel("$\theta_T,\theta_0 [\mathrm{^o}]$");
-xlabel("$V_v [m/s]$");
+plot(Vvs,theta_0_vvs*(180/pi),syms(1),'Color','black','LineWidth',LW); hold on
+plot(Vvs,theta_T_vvs*(180/pi),syms(2),'Color','black','LineWidth',LW); hold on
+legend("$\theta_0$","$\theta_T$",'Location','best','FontSize',24);
+ylabel("$\theta_T,\theta_0 [\mathrm{^o}]$",'FontSize',24);
+xlabel("$V_v [m/s]$",'FontSize',24);
 grid minor
 saveas(gcf,"Graficas/thetavsVv_VV",'eps');
 
 figure(7) 
-plot(Vvs,PM_vvs,'Color','black','LineWidth',1.5); hold on
+plot(Vvs,PM_vvs*0.001,'Color','black','LineWidth',LW); hold on
 plot([Vvs(1) Vvs(end)],[0 0],syms(2),'Color','black','LineWidth',0.7); hold on
 %plot([0 0],[PM_vvs(1)*1.2 PM_vvs(end)*1.3],syms(2),'Color','black','LineWidth',0.5); hold on
 scatter(-19.5,0,'filled','MarkerEdgeColor','black','MarkerFaceColor','black');
-annotation('textbox',[0.2 0.02 .4 .4],'EdgeColor','none','String','$A$','FontSize',12,'Linewidth',5,'Interpreter','latex'); hold on
-ylabel("$P_M [W]$");
-xlabel("$V_v [m/s]$");
+annotation('textbox',[0.17 0.08 .4 .4],'EdgeColor','none','String','$A$','FontSize',24,'Linewidth',5,'Interpreter','latex'); hold on
+ylabel("$P_M [kW]$",'FontSize',24);
+xlabel("$V_v [m/s]$",'FontSize',24);
 grid minor
 saveas(gcf,"Graficas/PMvsVv_VV",'eps');
 
 figure(8)
 h = zeros(2,1);
-h(1) = plot(Vv_vio,-v_i_vio,syms(1),'Color','black','LineWidth',1.5); hold on
-h(2) = plot(Vv_vio,-v_i_vio_Glauert,syms(2),'Color','black','LineWidth',1.5); hold on
+h(1) = plot(Vv_vio,-v_i_vio,syms(1),'Color','black','LineWidth',LW); hold on
+h(2) = plot(Vv_vio,-v_i_vio_Glauert,syms(2),'Color','black','LineWidth',LW); hold on
 %plot(Vv_vio,-v_i_vio_Glauert_2,syms(2),'Color','black','LineWidth',0.7); hold on
 %scatter(Vv_vio,-v_i_vio_Rand,'MarkerEdgeColor','black'); hold on
 xline(0,'--','Color','black','LineWidth',0.7); hold on
@@ -383,8 +385,8 @@ xline(-2,'--','Color','black','LineWidth',0.7); hold on
 glau = @(x) -0.5.*(x + sqrt((x.^2) -4));
 glau_2 = @(x) -0.5.*(x - sqrt((x.^2) -4));
 vio_aux = linspace(0.85,2,10);
-plot(Vv_vio(1:5),glau(Vv_vio(1:5)),syms(2),'Color','black','LineWidth',1.5); hold on
-plot(Vv_vio(1:5),glau_2(Vv_vio(1:5)),syms(2),'Color','black','LineWidth',1.5); hold on
+plot(Vv_vio(1:5),glau(Vv_vio(1:5)),syms(2),'Color','black','LineWidth',LW); hold on
+plot(Vv_vio(1:5),glau_2(Vv_vio(1:5)),syms(2),'Color','black','LineWidth',LW); hold on
 
 plot([-3, 0],[3,0],'-.','Color','black','LineWidth',0.7); hold on
 plot([-3, 0],[1.5,0],'-.','Color','black','LineWidth',0.7); hold on
@@ -396,8 +398,8 @@ annotation('textbox',[.25 .25 .4 .2],'EdgeColor','none','String','Estela Turbule
 
 
 xlim([-2.5 1]);
-ylabel("$v_i/v_io [-]$");
-xlabel("$V_v/v_io [-]$");
+ylabel("$v_i/v_io [-]$",'FontSize',12);
+xlabel("$V_v/v_io [-]$",'FontSize',12);
 legend(h,"Cuerva","Glauert",'Location','best','FontSize',12);
 grid minor
 saveas(gcf,"Graficas/v_ivsVv_VV",'eps');
@@ -512,31 +514,31 @@ for i = 1:length(o_on)
     CMys_T(i,2) = ndTrimState_atr_EOFF.actions.tailRotor.fuselage.CMFz(i);
 
 end
-
+%%
 LW = 1.5; %ACABAR DE ADAPTAR ESTO
 syms = ["--","-","-x","--.","-*","--^"];
 
 figure()
-plot(Vvs_atr_MSB,lamdas_i_MSB,syms(1),'Color','black','LineWidth',1); hold on
-plot(Vvs_atr_EOFF,lamdas_i_EOFF,syms(3),'Color','black','LineWidth',1); hold on
-legend("$\texttt{@mainShaftBroken}$","$\texttt{@EngineOffTransmissionOn}$",'Location','best','FontSize',12);
-ylabel("$\lambda_i [-]$");
-xlabel("$V_v [m/s]$");
+plot(Vvs_atr_MSB,lamdas_i_MSB,syms(1),'Color','black','LineWidth',LW); hold on
+plot(Vvs_atr_EOFF,lamdas_i_EOFF,syms(3),'Color','black','LineWidth',LW); hold on
+legend("$\texttt{@mainShaftBroken}$","$\texttt{@EngineOffTransmissionOn}$",'Location','northoutside','FontSize',24);
+ylabel("$\lambda_i [-]$",'FontSize',24);
+xlabel("$V_v [m/s]$",'FontSize',24);
 grid minor
 saveas(gcf,"Graficas/lambdaivsVv_ATR",'eps');
 
 figure() 
-plot(Vvs_atr_MSB,theta0s_i_MSB*(180/pi),syms(1),'Color','black','LineWidth',1); hold on
-plot(Vvs_atr_EOFF,theta0s_i_EOFF*(180/pi),syms(3),'Color','black','LineWidth',1); hold on
-ylabel("$\theta_0 [\mathrm{^o}]$");
-xlabel("$V_v [m/s]$");
+plot(Vvs_atr_MSB,theta0s_i_MSB*(180/pi),syms(1),'Color','black','LineWidth',LW); hold on
+plot(Vvs_atr_EOFF,theta0s_i_EOFF*(180/pi),syms(3),'Color','black','LineWidth',LW); hold on
+ylabel("$\theta_0 [\mathrm{^o}]$",'FontSize',24);
+xlabel("$V_v [m/s]$",'FontSize',24);
 grid minor
 saveas(gcf,"Graficas/theta0vsVv_ATR",'eps');
 figure()
-plot(Vvs_atr_MSB,thetaTs_i_MSB*(180/pi),syms(1),'Color','black','LineWidth',1); hold on
-plot(Vvs_atr_EOFF,thetaTs_i_EOFF*(180/pi),syms(3),'Color','black','LineWidth',1); hold on
-ylabel("$\theta_T [\mathrm{^o}]$");
-xlabel("$V_v [m/s]$");
+plot(Vvs_atr_MSB,thetaTs_i_MSB*(180/pi),syms(1),'Color','black','LineWidth',LW); hold on
+plot(Vvs_atr_EOFF,thetaTs_i_EOFF*(180/pi),syms(3),'Color','black','LineWidth',LW); hold on
+ylabel("$\theta_T [\mathrm{^o}]$",'FontSize',24);
+xlabel("$V_v [m/s]$",'FontSize',24);
 grid minor
 saveas(gcf,"Graficas/thetaTvsVv_ATR",'eps');
 
@@ -631,12 +633,10 @@ for i = 1:length(VHs)
 
         Prp_Pra(i,j) = dimTrimState.Pow.Pmr(i,j)/dimTrimState.Pow.Ptr(i,j);
         
-        %SACAR MOMENTOS COMPARATIVA
-
     end
 
 end
-%%
+
 syms = ["--","-","-x","--.","-*","--^"];
 
 LW = 1.5;
@@ -655,12 +655,12 @@ plot(VHs,Phis(:,3)*(180/pi),syms(3),'Color','Black','LineWidth',LW); hold on
 plot(VHs,Thetas(:,1)*(180/pi),syms(1),'Color','red','LineWidth',LW); hold on
 h(2) = plot(VHs,Thetas(:,2)*(180/pi),syms(2),'Color','red','LineWidth',LW); hold on
 plot(VHs,Thetas(:,3)*(180/pi),syms(3),'Color','red','LineWidth',LW); hold on
-legend(h,"$\Phi$","$\Theta$",'Location','southwest','FontSize',24); 
-%Pensar como meter dos leyendas en 1 figura
-%legend(j,"$\beta_{f0} = -5 \mathrm{^o}$","$0 \mathrm{^o}$","$+5 \mathrm{^o}$",'Location','northwest','FontSize',24,'Orientation','horizontal');
+legend(h,"$\Phi$","$\Theta$",'Location','northwest','FontSize',24,'Orientation','horizontal'); 
+grid minor
+a=axes('position',get(gca,'position'),'visible','off');
+legend(a,j,"$\beta_{f0} = -5 \mathrm{^o}$","$0 \mathrm{^o}$","$+5 \mathrm{^o}$",'Location','southwest','FontSize',24,'Orientation','horizontal');
 ylabel("$\Theta, \Phi [\mathrm{^o}]$",'FontSize',24);
 xlabel("$V_h [m/s]$",'FontSize',24);
-grid minor
 saveas(gcf,"Graficas/ThetaPhivsVH_AV",'eps2c');
 
 figure(13)
@@ -738,8 +738,8 @@ plot(VHs,PMs(:,3)*0.001,syms(3),'Color','Black','LineWidth',LW); hold on
 scatter(V_max_alcance(2),P_max_alcance(2)*0.001,'MarkerEdgeColor','black','LineWidth',2); hold on
 scatter(V_max_autonm(2),P_max_autonm(2)*0.001,'MarkerEdgeColor','black','LineWidth',2); hold on
 
-annotation('textbox',[.56 .2 .4 .27],'EdgeColor','none','String','$C$','FontSize',24,'Linewidth',5,'Interpreter','latex'); hold on
-annotation('textbox',[.85 .22 .4 .33],'EdgeColor','none','String','$D$','FontSize',24,'Linewidth',5,'Interpreter','latex'); hold on
+annotation('textbox',[.56 .22 .4 .27],'EdgeColor','none','String','$C$','FontSize',24,'Linewidth',5,'Interpreter','latex'); hold on
+annotation('textbox',[.82 .22 .4 .33],'EdgeColor','none','String','$D$','FontSize',24,'Linewidth',5,'Interpreter','latex'); hold on
 
 plot([0, V_max_alcance(2)],[0,P_max_alcance(2)*0.001],'--','Color','black','LineWidth',0.7); hold on
 
@@ -831,7 +831,7 @@ for i = 1:length(VHs)
 end
 
 LW = 1.5;
-syms = ["--","-*","-","--.","-x","--^"];
+syms = ["--","-x","-","--.","-*","--^"];
 
 figure()
 plot(VHs,theta0s(:,1)*(180/pi),syms(1),'Color','Black','LineWidth',LW); hold on
@@ -1021,18 +1021,17 @@ for i = 1:length(VHs)
     end
 end
 
-%%
-LW = 1.2;
+LW = 1.5;
 
-syms = ["-s","-^","-","--","--s","--^"];
+syms = ["--","-","-x","--.","-x","--^"];
 
 figure()
 plot(VHs,theta0s(:,1)*(180/pi),syms(1),'Color','Black','LineWidth',LW); hold on
 plot(VHs,theta0s(:,2)*(180/pi),syms(2),'Color','Black','LineWidth',LW); hold on
 plot(VHs,theta0s(:,3)*(180/pi),syms(3),'Color','Black','LineWidth',LW); hold on
 
-ylabel("$\theta_0 [\mathrm{^o}]$");
-xlabel("$V_h [m/s]$");
+ylabel("$\theta_0 [\mathrm{^o}]$",'FontSize',24);
+xlabel("$V_h [m/s]$",'FontSize',24);
 grid minor
 saveas(gcf,"Graficas/thetas0svsVH_AV_ATR",'eps2c');
 
@@ -1041,8 +1040,8 @@ plot(VHs,theta1Ts(:,1)*(180/pi),syms(4),'Color','Black','LineWidth',LW); hold on
 plot(VHs,theta1Ts(:,2)*(180/pi),syms(5),'Color','Black','LineWidth',LW); hold on
 plot(VHs,theta1Ts(:,3)*(180/pi),syms(6),'Color','Black','LineWidth',LW); hold on
 
-ylabel("$\theta_T [\mathrm{^o}]$");
-xlabel("$V_h [m/s]$");
+ylabel("$\theta_T [\mathrm{^o}]$",'FontSize',24);
+xlabel("$V_h [m/s]$",'FontSize',24);
 grid minor
 saveas(gcf,"Graficas/thetasTsvsVH_AV_ATR",'eps2c');
 
@@ -1051,8 +1050,8 @@ plot(VHs,theta1Cs(:,1)*(180/pi),syms(1),'Color','red','LineWidth',LW); hold on
 plot(VHs,theta1Cs(:,2)*(180/pi),syms(2),'Color','red','LineWidth',LW); hold on
 plot(VHs,theta1Cs(:,3)*(180/pi),syms(3),'Color','red','LineWidth',LW); hold on
 
-ylabel("$\theta_{1C} [\mathrm{^o}]$");
-xlabel("$V_h [m/s]$");
+ylabel("$\theta_{1C} [\mathrm{^o}]$",'FontSize',24);
+xlabel("$V_h [m/s]$",'FontSize',24);
 grid minor
 saveas(gcf,"Graficas/thetas1CvsVH_AV_ATR",'eps2c');
 
@@ -1061,8 +1060,8 @@ plot(VHs,theta1Ss(:,1)*(180/pi),syms(1),'Color','blue','LineWidth',LW); hold on
 plot(VHs,theta1Ss(:,2)*(180/pi),syms(2),'Color','blue','LineWidth',LW); hold on
 plot(VHs,theta1Ss(:,3)*(180/pi),syms(3),'Color','blue','LineWidth',LW); hold on
 
-ylabel("$\theta_{1S} [\mathrm{^o}]$");
-xlabel("$V_h [m/s]$");
+ylabel("$\theta_{1S} [\mathrm{^o}]$",'FontSize',24);
+xlabel("$V_h [m/s]$",'FontSize',24);
 grid minor
 saveas(gcf,"Graficas/thetas1SvsVH_AV_ATR",'eps2c');
 
@@ -1072,18 +1071,22 @@ plot(VHs,PMs(:,1),syms(1),'Color','Black','LineWidth',LW); hold on
 plot(VHs,PMs(:,2),syms(2),'Color','Black','LineWidth',LW); hold on
 plot(VHs,PMs(:,3),syms(3),'Color','Black','LineWidth',LW); hold on
 
-ylabel("$P_M [W]$");
-xlabel("$V_h [m/s]$");
+ylabel("$P_M [W]$",'FontSize',24);
+xlabel("$V_h [m/s]$",'FontSize',24);
 grid minor
 saveas(gcf,"Graficas/PMsvsVH_AV_ATR",'eps2c');
+
+
+%[Vv_min, iVvmin] = min(Vvs(:,2)); 
+%[gammaT_min, igammaT_min] = min(Vvs(:,2)/VHs);
 
 figure()
 plot(VHs,Vvs(:,1),syms(1),'Color','Black','LineWidth',LW); hold on
 plot(VHs,Vvs(:,2),syms(2),'Color','Black','LineWidth',LW); hold on
 plot(VHs,Vvs(:,3),syms(3),'Color','Black','LineWidth',LW); hold on
 
-ylabel("$V_v [m/s]$");
-xlabel("$V_h [m/s]$");
+ylabel("$V_v [m/s]$",'FontSize',24);
+xlabel("$V_h [m/s]$",'FontSize',24);
 grid minor
 saveas(gcf,"Graficas/VVsvsVH_AV_ATR",'eps2c');
 
@@ -1092,8 +1095,8 @@ plot(VHs,-gammaTs(:,1)*(180/pi),syms(1),'Color','Black','LineWidth',LW); hold on
 plot(VHs,gammaTs(:,2)*(180/pi),syms(2),'Color','Black','LineWidth',LW); hold on
 plot(VHs,-gammaTs(:,3)*(180/pi),syms(3),'Color','Black','LineWidth',LW); hold on
 
-ylabel("$\gamma_T [\mathrm{^o}]$");
-xlabel("$V_h [m/s]$");
+ylabel("$\gamma_T [\mathrm{^o}]$,'FontSize',24");
+xlabel("$V_h [m/s]$",'FontSize',24);
 grid minor
 saveas(gcf,"Graficas/gammaTsvsVH_AV_ATR",'eps2c');
 
@@ -1141,6 +1144,10 @@ thetasT_Sw = zeros(length(xcgs),length(VHs));
 lambdaias_Sw = zeros(length(xcgs),length(VHs));
 prm_prps_Sw = zeros(length(xcgs),length(VHs));
 
+CMty_mr = zeros(length(xcgs),length(VHs));
+CMty_ht = zeros(length(xcgs),length(VHs));
+CMty_f = zeros(length(xcgs),length(VHs));
+
 for i = 1:length(xcgs)
 
         ndHeRef_cg = rigidHe2ndHe(heRefs_Xcg{i},atm,h);
@@ -1160,64 +1167,71 @@ for i = 1:length(xcgs)
             thetas1C_cg(i,j) =  ndTrimState_cg.solution.theta1C(j); betas1S_cg(i,j) =  ndTrimState_cg.solution.beta1S(j);
             thetas1S_cg(i,j) =  ndTrimState_cg.solution.theta1S(j); Thetas_cg(i,j) =  ndTrimState_cg.solution.Theta(j);
 
-            Thetas_Sw(i,j) =  ndTrimState_Sw.solution.Theta(j);
+            Thetas_Sw(i,j) =  ndTrimState_Sw.solution.theta0(j);
             thetasT_Sw(i,j) =  ndTrimState_Sw.solution.theta0tr(j);
             lambdaias_Sw(i,j) =  ndTrimState_Sw.solution.lambda0tr(j);
             prm_prps_Sw(i,j) =  dimTrimState_Sw.Pow.Pmr(j)/dimTrimState_Sw.Pow.Ptr(j);
+            
+            CMty_mr(i,j) = ndTrimState_cg.actions.mainRotor.fuselage.CMty(j);
+            CMty_ht(i,j) = ndTrimState_cg.actions.leftHTP.fuselage.CMty(j) + ndTrimState_cg.actions.rightHTP.fuselage.CMty(j);
+            CMty_f(i,j) = ndTrimState_cg.actions.fuselage.fuselage.CMty(j);
 
         end
         
-        axds          = getaxds({'VOR'},{'$$V/(\Omega R)$$ [-]'},1);
-
-        azdsACT       = getaxds({'CMtx' 'CMty' 'CMtz'},...
-                      {'$$C_{Mx}$$ [-]' '$$C_{My}$$ [-]' '$$C_{Mz}$$ [-]'}, ...
-                      [1 1 1 ...
-                       1 1 1]);
-
-        plotActionsByElement(ndTrimState_cg.actions,axds,ndVHs,'defaultVars',azdsACT);
+%         axds          = getaxds({'VOR'},{'$$V/(\Omega R)$$ [-]'},1);
+% 
+%         azdsACT       = getaxds({'CMtx' 'CMty' 'CMtz'},...
+%                       {'$$C_{Mx}$$ [-]' '$$C_{My}$$ [-]' '$$C_{Mz}$$ [-]'}, ...
+%                       [1 1 1 ...
+%                        1 1 1]);
+% 
+%         plotActionsByElement(ndTrimState_cg.actions,axds,ndVHs,'defaultVars',azdsACT);
 
 end
+%%
+LW = 1.5;
 
-LW = 1.2;
+syms = ["--","-","-x","--.","-x","-o","-*"];
 
-syms = ["-s","-","-^","--s","--","--^"];
-
-% XCG FALTAN LEYENDAS
 figure()
 plot(VHs,thetas0_cg(1,:)*(180/pi),syms(1),'Color','Black','LineWidth',LW); hold on
 plot(VHs,thetas0_cg(2,:)*(180/pi),syms(2),'Color','Black','LineWidth',LW); hold on
 plot(VHs,thetas0_cg(3,:)*(180/pi),syms(3),'Color','Black','LineWidth',LW); hold on
 
-ylabel("$\theta_{0}[\mathrm{^o}]$");
-xlabel("$V_h [m/s]$");
+ylabel("$\theta_{0}[\mathrm{^o}]$",'FontSize',24);
+xlabel("$V_h [m/s]$",'FontSize',24);
 grid minor
 saveas(gcf,"Graficas/thetas0svsVH_XCG",'eps2c');
 
 figure()
+h = zeros(2,1);
 plot(VHs,thetas1C_cg(1,:)*(180/pi),syms(1),'Color','red','LineWidth',LW); hold on
-plot(VHs,thetas1C_cg(2,:)*(180/pi),syms(2),'Color','red','LineWidth',LW); hold on
+h(1) = plot(VHs,thetas1C_cg(2,:)*(180/pi),syms(2),'Color','red','LineWidth',LW); hold on
 plot(VHs,thetas1C_cg(3,:)*(180/pi),syms(3),'Color','red','LineWidth',LW); hold on
 
-plot(VHs,thetas1S_cg(1,:)*(180/pi),syms(4),'Color','blue','LineWidth',LW); hold on
-plot(VHs,thetas1S_cg(2,:)*(180/pi),syms(5),'Color','blue','LineWidth',LW); hold on
-plot(VHs,thetas1S_cg(3,:)*(180/pi),syms(6),'Color','blue','LineWidth',LW); hold on
+plot(VHs,thetas1S_cg(1,:)*(180/pi),syms(1),'Color','blue','LineWidth',LW); hold on
+h(2) = plot(VHs,thetas1S_cg(2,:)*(180/pi),syms(2),'Color','blue','LineWidth',LW); hold on
+plot(VHs,thetas1S_cg(3,:)*(180/pi),syms(3),'Color','blue','LineWidth',LW); hold on
 
-ylabel("$\theta_{1C},\theta_{1S} [\mathrm{^o}]$");
-xlabel("$V_h [m/s]$");
+legend(h,"$\theta_{1C}$","$\theta_{1S}$",'FontSize',24,'Location','best');
+ylabel("$\theta_{1C},\theta_{1S} [\mathrm{^o}]$",'FontSize',24);
+xlabel("$V_h [m/s]$",'FontSize',24);
 grid minor
 saveas(gcf,"Graficas/thetas1svsVH_XCG",'eps2c');
 
 figure()
+h = zeros(2,1);
 plot(VHs,betas1C_cg(1,:)*(180/pi),syms(1),'Color','red','LineWidth',LW); hold on
-plot(VHs,betas1C_cg(2,:)*(180/pi),syms(2),'Color','red','LineWidth',LW); hold on
+h(1) = plot(VHs,betas1C_cg(2,:)*(180/pi),syms(2),'Color','red','LineWidth',LW); hold on
 plot(VHs,betas1C_cg(3,:)*(180/pi),syms(3),'Color','red','LineWidth',LW); hold on
 
 plot(VHs,betas1S_cg(1,:)*(180/pi),syms(1),'Color','blue','LineWidth',LW); hold on
-plot(VHs,betas1S_cg(2,:)*(180/pi),syms(2),'Color','blue','LineWidth',LW); hold on
+h(2) = plot(VHs,betas1S_cg(2,:)*(180/pi),syms(2),'Color','blue','LineWidth',LW); hold on
 plot(VHs,betas1S_cg(3,:)*(180/pi),syms(3),'Color','blue','LineWidth',LW); hold on
 
-ylabel("$\beta_{1C},\beta_{1S} [\mathrm{^o}]$");
-xlabel("$V_h [m/s]$");
+legend(h,"$\beta_{1C}$","$\beta_{1S}$",'FontSize',24,'Location','best','Orientation','horizontal');
+ylabel("$\beta_{1C},\beta_{1S} [\mathrm{^o}]$",'FontSize',24);
+xlabel("$V_h [m/s]$",'FontSize',24);
 grid minor
 saveas(gcf,"Graficas/betas1svsVH_XCG",'eps2c');
 
@@ -1226,10 +1240,48 @@ plot(VHs,Thetas_cg(1,:)*(180/pi),syms(1),'Color','black','LineWidth',LW); hold o
 plot(VHs,Thetas_cg(2,:)*(180/pi),syms(2),'Color','black','LineWidth',LW); hold on
 plot(VHs,Thetas_cg(3,:)*(180/pi),syms(3),'Color','black','LineWidth',LW); hold on
 
-ylabel("$\Theta [\mathrm{^o}]$");
-xlabel("$V_h [m/s]$");
+legend("$x_{cg} - 1$","$x_{cg}$","$x_{cg} + 1$",'FontSize',24,'Location','southwest');
+ylabel("$\Theta [\mathrm{^o}]$",'FontSize',24);
+xlabel("$V_h [m/s]$",'FontSize',24);
 grid minor
 saveas(gcf,"Graficas/ThetassvsVH_XCG",'eps2c');
+
+figure()
+h= zeros(3,1);
+
+subplot(1,3,1);
+plot(VHs,CMty_mr(1,:),syms(1),'Color','black','LineWidth',LW); hold on
+plot(VHs,CMty_ht(1,:),syms(1),'Color','red','LineWidth',LW); hold on
+plot(VHs,CMty_f(1,:),syms(1),'Color','blue','LineWidth',LW); hold on
+
+ylim([-4 4]*10^(-4));
+ylabel("$CMt_y [-]$",'FontSize',12);
+xlabel("$V_h [m/s]$",'FontSize',12);
+title("$x_{cg} - 1$",'FontSize',12)
+grid minor
+
+subplot(1,3,2);
+h(1) = plot(VHs,CMty_mr(2,:),syms(1),'Color','Black','LineWidth',LW); hold on
+h(2) = plot(VHs,CMty_ht(2,:),syms(1),'Color','red','LineWidth',LW); hold on
+h(3) = plot(VHs,CMty_f(2,:),syms(1),'Color','blue','LineWidth',LW); hold on
+
+ylim([-4 4]*10^(-4));
+xlabel("$V_h [m/s]$",'FontSize',12);
+title("$x_{cg}$",'FontSize',12)
+grid minor
+
+subplot(1,3,3);
+plot(VHs,CMty_mr(3,:),syms(1),'Color','black','LineWidth',LW); hold on
+plot(VHs,CMty_ht(3,:),syms(1),'Color','red','LineWidth',LW); hold on
+plot(VHs,CMty_f(3,:),syms(1),'Color','blue','LineWidth',LW); hold on
+
+legend(h,"$RP$","$EH$","$Fuselaje$",'FontSize',12,'Location','southoutside');
+ylim([-4 4]*10^(-4));
+xlabel("$V_h [m/s]$",'FontSize',12);
+title("$x_{cg} +1$",'FontSize',12)
+grid minor
+
+saveas(gcf,"Graficas/CmtyvsVH_XCG",'eps2c');
 
 %SW
 figure()
@@ -1237,8 +1289,9 @@ plot(VHs,Thetas_Sw(1,:)*(180/pi),syms(1),'Color','Black','LineWidth',LW); hold o
 plot(VHs,Thetas_Sw(2,:)*(180/pi),syms(2),'Color','Black','LineWidth',LW); hold on
 plot(VHs,Thetas_Sw(3,:)*(180/pi),syms(3),'Color','Black','LineWidth',LW); hold on
 
-ylabel("$\Theta[\mathrm{^o}]$");
-xlabel("$V_h [m/s]$");
+legend("$0.5S_w$","$S_w$","$1.5S_w$",'Location','southwest','FontSize',24);
+ylabel("$\theta_0[\mathrm{^o}]$",'FontSize',24);
+xlabel("$V_h [m/s]$",'FontSize',24);
 grid minor
 saveas(gcf,"Graficas/ThetasvsVH_SW",'eps2c');
 
@@ -1247,8 +1300,8 @@ plot(VHs,thetasT_Sw(1,:)*(180/pi),syms(1),'Color','Black','LineWidth',LW); hold 
 plot(VHs,thetasT_Sw(2,:)*(180/pi),syms(2),'Color','Black','LineWidth',LW); hold on
 plot(VHs,thetasT_Sw(3,:)*(180/pi),syms(3),'Color','Black','LineWidth',LW); hold on
 
-ylabel("$\theta_T [\mathrm{^o}]$");
-xlabel("$V_h [m/s]$");
+ylabel("$\theta_T [\mathrm{^o}]$",'FontSize',24);
+xlabel("$V_h [m/s]$",'FontSize',24);
 grid minor
 saveas(gcf,"Graficas/thetasTsvsVH_SW",'eps2c');
 
@@ -1257,8 +1310,8 @@ plot(VHs,lambdaias_Sw(1,:),syms(1),'Color','Black','LineWidth',LW); hold on
 plot(VHs,lambdaias_Sw(2,:),syms(2),'Color','Black','LineWidth',LW); hold on
 plot(VHs,lambdaias_Sw(3,:),syms(3),'Color','Black','LineWidth',LW); hold on
 
-ylabel("$\lambda_i [-]$");
-xlabel("$V_h [m/s]$");
+ylabel("$\lambda_{ia} [-]$",'FontSize',24);
+xlabel("$V_h [m/s]$",'FontSize',24);
 grid minor
 saveas(gcf,"Graficas/lambdasvsVH_SW",'eps2c');
 
@@ -1267,7 +1320,7 @@ plot(VHs,prm_prps_Sw(1,:),syms(1),'Color','Black','LineWidth',LW); hold on
 plot(VHs,prm_prps_Sw(2,:),syms(2),'Color','Black','LineWidth',LW); hold on
 plot(VHs,prm_prps_Sw(3,:),syms(3),'Color','Black','LineWidth',LW); hold on
 
-ylabel("$P_{rm}/P_{tr} [-]$");
-xlabel("$V_h [m/s]$");
+ylabel("$P_{rp}/P_{ra} [-]$",'FontSize',24);
+xlabel("$V_h [m/s]$",'FontSize',24);
 grid minor
 saveas(gcf,"Graficas/prmprpsvsVH_SW",'eps2c');
